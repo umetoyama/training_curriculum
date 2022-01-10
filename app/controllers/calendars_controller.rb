@@ -8,6 +8,7 @@ class CalendarsController < ApplicationController
 
   # 予定の保存
   def create
+    # binding.pry
     Plan.create(plan_params)
     redirect_to action: :index
   end
@@ -15,7 +16,7 @@ class CalendarsController < ApplicationController
   private
 
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan)
   end
 
   def getWeek
@@ -40,3 +41,5 @@ class CalendarsController < ApplicationController
 
   end
 end
+
+# issue4修正点→19行目require()内の記述を:モデル名に変更
