@@ -12,7 +12,7 @@
     <% @week_days.each do |day| %>
       <div class='item'>
         <div class='date'>
-          <% day[:month] %>/<% day[:date] %>
+          <%= day[:month] %>/<%= day[:date] %>
         </div>
         <ul class='content'>
         <% if day[:plans].length != 0 %>
@@ -25,3 +25,5 @@
     <% end %>
   </div>
 </div>
+
+<%# issue5修正点→15行目の<%=に変更し表示する様にした %>
