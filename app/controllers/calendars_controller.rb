@@ -35,11 +35,17 @@ class CalendarsController < ApplicationController
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans}
+
+      wday_num = @todays_date.wday+x
+      if wday_num >= 7
+        wday_num = wday_num -7
+      end
+
+      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans, :wday => wdays[wday_num]}
       @week_days.push(days)
     end
-
   end
 end
 
 # issue4修正点→19行目require()内の記述を:モデル名に変更
+# issue6の修正点→39~42行目の記述追加,44行目のハッシュに:wday => wdays[wday_num]の記述を追加
